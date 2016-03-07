@@ -38,6 +38,7 @@
     
     [_button release];
     
+    [_codeCheckerVC release];
     [_loggerVC release];
     
     [super dealloc];
@@ -114,6 +115,13 @@
     [_loggerVCButton addTarget:self action:@selector(openLogAction) forControlEvents:UIControlEventTouchUpInside];
     [_loggerVCButton sizeToFit];
     [_containerScrollView addSubview:_loggerVCButton];
+    
+    _codeCheckerVCButton = [[UIButton alloc] init];
+    [_codeCheckerVCButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [_codeCheckerVCButton setTitle:@"Check Code" forState:UIControlStateNormal];
+    [_codeCheckerVCButton addTarget:self action:@selector(openCodeChecker) forControlEvents:UIControlEventTouchUpInside];
+    [_codeCheckerVCButton sizeToFit];
+    [_containerScrollView addSubview:_codeCheckerVCButton];
 }
 
 #pragma mark - UIHelper
@@ -174,6 +182,7 @@
  
     y += paddingBetweenSteps;
     [_loggerVCButton setFrame:CGRectMake( self.view.frame.size.width - margin - _loggerVCButton.frame.size.width, y, _loggerVCButton.frame.size.width, _loggerVCButton.frame.size.height) ];
+    [_codeCheckerVCButton setFrame:CGRectMake(margin, y, _codeCheckerVCButton.frame.size.width, _codeCheckerVCButton.frame.size.height) ];
     y += _loggerVCButton.frame.size.height + paddingBetweenSteps;
     
     [_containerScrollView setContentSize:CGSizeMake(self.view.bounds.size.width, y) ];
@@ -231,6 +240,14 @@
     _loggerVC = [[LifeCycleLoggerViewController alloc] init];
     
     [self presentViewController:_loggerVC animated:YES completion:nil];
+}
+
+- (void)openCodeChecker
+{
+    if ( _codeCheckerVC == nil )
+        _codeCheckerVC = [[CodeCheckerViewController alloc] init];
+    
+    [self presentViewController:_codeCheckerVC animated:YES completion:nil];
 }
 
 #pragma mark - Input

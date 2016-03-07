@@ -19,6 +19,7 @@
 		DC2739541C8B32840066E91F /* TestCascadeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2739531C8B32840066E91F /* TestCascadeObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DCF930761C8D637A0000FF99 /* LifeCycleLoggerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF930751C8D637A0000FF99 /* LifeCycleLoggerViewController.m */; };
 		DCF930791C8D639D0000FF99 /* LifeCycleLogMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF930781C8D639D0000FF99 /* LifeCycleLogMessage.m */; };
+		DCF9307D1C8D6AE60000FF99 /* CodeCheckerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF9307C1C8D6AE60000FF99 /* CodeCheckerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		DCF930751C8D637A0000FF99 /* LifeCycleLoggerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LifeCycleLoggerViewController.m; path = Logger/LifeCycleLoggerViewController.m; sourceTree = "<group>"; };
 		DCF930771C8D639D0000FF99 /* LifeCycleLogMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LifeCycleLogMessage.h; path = Logger/LifeCycleLogMessage.h; sourceTree = "<group>"; };
 		DCF930781C8D639D0000FF99 /* LifeCycleLogMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LifeCycleLogMessage.m; path = Logger/LifeCycleLogMessage.m; sourceTree = "<group>"; };
+		DCF9307B1C8D6AE60000FF99 /* CodeCheckerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CodeCheckerViewController.h; path = CodeCheck/CodeCheckerViewController.h; sourceTree = "<group>"; };
+		DCF9307C1C8D6AE60000FF99 /* CodeCheckerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CodeCheckerViewController.m; path = CodeCheck/CodeCheckerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,7 @@
 		DC27392E1C8B1FFD0066E91F /* ManualMemoryTest */ = {
 			isa = PBXGroup;
 			children = (
+				DCF9307A1C8D6ACA0000FF99 /* CodeCheck */,
 				DC27394D1C8B234A0066E91F /* Logger */,
 				DC2739461C8B20A00066E91F /* TestObject */,
 				DC2739321C8B1FFD0066E91F /* AppDelegate.h */,
@@ -123,6 +127,15 @@
 				DCF930781C8D639D0000FF99 /* LifeCycleLogMessage.m */,
 			);
 			name = Logger;
+			sourceTree = "<group>";
+		};
+		DCF9307A1C8D6ACA0000FF99 /* CodeCheck */ = {
+			isa = PBXGroup;
+			children = (
+				DCF9307B1C8D6AE60000FF99 /* CodeCheckerViewController.h */,
+				DCF9307C1C8D6AE60000FF99 /* CodeCheckerViewController.m */,
+			);
+			name = CodeCheck;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +211,7 @@
 				DC2739371C8B1FFD0066E91F /* ViewController.m in Sources */,
 				DCF930761C8D637A0000FF99 /* LifeCycleLoggerViewController.m in Sources */,
 				DC2739341C8B1FFD0066E91F /* AppDelegate.m in Sources */,
+				DCF9307D1C8D6AE60000FF99 /* CodeCheckerViewController.m in Sources */,
 				DC2739541C8B32840066E91F /* TestCascadeObject.m in Sources */,
 				DC2739511C8B23660066E91F /* LifeCycleLogger.m in Sources */,
 				DC27394C1C8B210C0066E91F /* TestContainer.m in Sources */,

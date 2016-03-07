@@ -11,6 +11,7 @@
 #import "TestContainer.h"
 
 #import "LifeCycleLoggerViewController.h"
+#import "CodeCheckerViewController.h"
 
 @interface ViewController : UIViewController
 {
@@ -38,7 +39,9 @@
     
     //Buttons
     UIButton *_loggerVCButton;
+    UIButton *_codeCheckerVCButton;
     
+    CodeCheckerViewController *_codeCheckerVC;
     LifeCycleLoggerViewController *_loggerVC;
 }
 

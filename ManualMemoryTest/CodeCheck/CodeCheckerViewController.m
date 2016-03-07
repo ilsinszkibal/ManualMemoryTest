@@ -1,16 +1,14 @@
 //
-//  LifeCycleLoggerViewController.m
+//  CodeCheckerViewController.m
 //  ManualMemoryTest
 //
 //  Created by Balazs Ilsinszki on 3/7/16.
 //  Copyright © 2016 Balazs Ilsinszki. All rights reserved.
 //
 
-#import "LifeCycleLoggerViewController.h"
+#import "CodeCheckerViewController.h"
 
-#import "LifeCycleLogger.h"
-
-@implementation LifeCycleLoggerViewController
+@implementation CodeCheckerViewController
 
 - (void)viewDidLoad
 {
@@ -26,14 +24,13 @@
     
     _titleLabel = [UILabel new];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
-    _titleLabel.text = @"Log output";
+    _titleLabel.text = @"Check code";
     [self.view addSubview:_titleLabel];
     
-    _textView = [UITextView new];
-    [self.view addSubview:_textView];
+    _webView = [[UIWebView alloc] init];
+    [self.view addSubview:_webView];
     
-    [self setupTextViewContent];
-    
+    [self loadGitHub];
 }
 
 - (void)viewDidLayoutSubviews
@@ -47,28 +44,15 @@
     CGFloat titleMargin = _backButton.frame.size.width + margin;
     [_titleLabel setFrame:CGRectMake(titleMargin, 24, self.view.frame.size.width - 2 * titleMargin, 40) ];
     
-    
-    [_textView setFrame:CGRectMake(margin, 80, self.view.frame.size.width - 2 * margin, self.view.frame.size.height - 80) ];
+    [_webView setFrame:CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height - 80) ];
 }
 
 #pragma mark - Private
 
-- (void)setupTextViewContent
+- (void)loadGitHub
 {
-    NSMutableArray *messageArray = [[LifeCycleLogger sharedInstance] messageArray];
-    
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:16] } ];
-    
-    for (LifeCycleLogMessage *message in messageArray) {
-        
-        NSDictionary *messageAttributes = @{ NSForegroundColorAttributeName : message.messageColor };
-        NSString *messageToPass = [NSString stringWithFormat:@"%@\n", message.messageText];
-        NSAttributedString *messageString = [[NSAttributedString alloc] initWithString:messageToPass attributes:messageAttributes];
-        
-        [string appendAttributedString:messageString];
-    }
-    
-    _textView.attributedText = string;
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://github.com/ilsinszkibal/ManualMemoryTest/tree/master/ManualMemoryTest"] ];
+    [_webView loadRequest:request];
 }
 
 #pragma mark - Action
