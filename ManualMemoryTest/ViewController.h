@@ -10,6 +10,8 @@
 
 #import "TestContainer.h"
 
+#import "LifeCycleLoggerViewController.h"
+
 @interface ViewController : UIViewController
 {
     TestContainer *_testContainer;
@@ -33,6 +35,11 @@
     UILabel *_containerRefToZeroLabel;
     
     UIButton *_button;
+    
+    //Buttons
+    UIButton *_loggerVCButton;
+    
+    LifeCycleLoggerViewController *_loggerVC;
 }
 
 

@@ -17,6 +17,8 @@
 		DC27394C1C8B210C0066E91F /* TestContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = DC27394B1C8B210C0066E91F /* TestContainer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DC2739511C8B23660066E91F /* LifeCycleLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2739501C8B23660066E91F /* LifeCycleLogger.m */; };
 		DC2739541C8B32840066E91F /* TestCascadeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2739531C8B32840066E91F /* TestCascadeObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DCF930761C8D637A0000FF99 /* LifeCycleLoggerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF930751C8D637A0000FF99 /* LifeCycleLoggerViewController.m */; };
+		DCF930791C8D639D0000FF99 /* LifeCycleLogMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF930781C8D639D0000FF99 /* LifeCycleLogMessage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,10 @@
 		DC2739501C8B23660066E91F /* LifeCycleLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LifeCycleLogger.m; path = Logger/LifeCycleLogger.m; sourceTree = "<group>"; };
 		DC2739521C8B32840066E91F /* TestCascadeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestCascadeObject.h; path = TestObject/TestCascadeObject.h; sourceTree = "<group>"; };
 		DC2739531C8B32840066E91F /* TestCascadeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestCascadeObject.m; path = TestObject/TestCascadeObject.m; sourceTree = "<group>"; };
+		DCF930741C8D637A0000FF99 /* LifeCycleLoggerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LifeCycleLoggerViewController.h; path = Logger/LifeCycleLoggerViewController.h; sourceTree = "<group>"; };
+		DCF930751C8D637A0000FF99 /* LifeCycleLoggerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LifeCycleLoggerViewController.m; path = Logger/LifeCycleLoggerViewController.m; sourceTree = "<group>"; };
+		DCF930771C8D639D0000FF99 /* LifeCycleLogMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LifeCycleLogMessage.h; path = Logger/LifeCycleLogMessage.h; sourceTree = "<group>"; };
+		DCF930781C8D639D0000FF99 /* LifeCycleLogMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LifeCycleLogMessage.m; path = Logger/LifeCycleLogMessage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,10 @@
 			children = (
 				DC27394F1C8B23660066E91F /* LifeCycleLogger.h */,
 				DC2739501C8B23660066E91F /* LifeCycleLogger.m */,
+				DCF930741C8D637A0000FF99 /* LifeCycleLoggerViewController.h */,
+				DCF930751C8D637A0000FF99 /* LifeCycleLoggerViewController.m */,
+				DCF930771C8D639D0000FF99 /* LifeCycleLogMessage.h */,
+				DCF930781C8D639D0000FF99 /* LifeCycleLogMessage.m */,
 			);
 			name = Logger;
 			sourceTree = "<group>";
@@ -186,12 +196,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC2739371C8B1FFD0066E91F /* ViewController.m in Sources */,
+				DCF930761C8D637A0000FF99 /* LifeCycleLoggerViewController.m in Sources */,
 				DC2739341C8B1FFD0066E91F /* AppDelegate.m in Sources */,
 				DC2739541C8B32840066E91F /* TestCascadeObject.m in Sources */,
 				DC2739511C8B23660066E91F /* LifeCycleLogger.m in Sources */,
 				DC27394C1C8B210C0066E91F /* TestContainer.m in Sources */,
 				DC2739491C8B20B80066E91F /* TestObject.m in Sources */,
 				DC2739311C8B1FFD0066E91F /* main.m in Sources */,
+				DCF930791C8D639D0000FF99 /* LifeCycleLogMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

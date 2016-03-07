@@ -25,7 +25,7 @@
     if ( self )
     {
         ref = (NSInteger)self;
-        LifeColorLog([UIColor blackColor], @"INIT TestContainer %@", self);
+        LifeColorLog([UIColor redColor], @"INIT TestContainer %@", self);
         
         _objectArray = [[NSMutableArray alloc] init];
     }
@@ -35,11 +35,11 @@
 
 - (void)dealloc
 {
-    LifeColorLog([UIColor blackColor], @"DEALLOC START TestContainer %@", self)
+    LifeColorLog([UIColor redColor], @"DEALLOC START TestContainer %@", self)
     
     [_objectArray release];
     
-    LifeColorLog([UIColor blackColor], @"DEALLOC END TestContainer %@", self)
+    LifeColorLog([UIColor redColor], @"DEALLOC END TestContainer %@", self)
     
     [super dealloc];
 }

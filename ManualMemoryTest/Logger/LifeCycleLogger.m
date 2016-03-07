@@ -10,9 +10,11 @@
 
 @implementation LifeCycleLogger
 
-static LifeCycleLogger *_instance;
+@synthesize messageArray = _messageArray;
 
 #pragma mark - Singleton
+
+static LifeCycleLogger *_instance;
 
 + (instancetype)sharedInstance
 {
@@ -24,16 +26,37 @@ static LifeCycleLogger *_instance;
     return _instance;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    
+    if ( self )
+    {
+        _messageArray = [NSMutableArray new];
+    }
+    
+    return self;
+}
+
 #pragma mark - Public
 
 - (void)log:(NSString *)message
 {
-    NSLog(@"%@", message);
+    [self log:message withColor:[UIColor blackColor] ];
 }
 
 - (void)log:(NSString *)message withColor:(UIColor *)color
 {
-    NSLog(@"%@", message);
+    LifeCycleLogMessage *messageObject = [[LifeCycleLogMessage alloc] init];
+    messageObject.messageText = message;
+    messageObject.messageColor = color;
+    
+    [_messageArray addObject:messageObject];
+}
+
+- (void)clearLog
+{
+    [_messageArray removeAllObjects];
 }
 
 @end

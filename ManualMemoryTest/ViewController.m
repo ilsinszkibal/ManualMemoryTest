@@ -38,6 +38,8 @@
     
     [_button release];
     
+    [_loggerVC release];
+    
     [super dealloc];
 }
 
@@ -105,6 +107,13 @@
     [_button addTarget:self action:@selector(action) forControlEvents:UIControlEventTouchUpInside];
     [_button sizeToFit];
     [_containerScrollView addSubview:_button];
+    
+    _loggerVCButton = [[UIButton alloc] init];
+    [_loggerVCButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [_loggerVCButton setTitle:@"Open Log" forState:UIControlStateNormal];
+    [_loggerVCButton addTarget:self action:@selector(openLogAction) forControlEvents:UIControlEventTouchUpInside];
+    [_loggerVCButton sizeToFit];
+    [_containerScrollView addSubview:_loggerVCButton];
 }
 
 #pragma mark - UIHelper
@@ -162,6 +171,10 @@
     
     [_button setFrame:CGRectMake( ( self.view.frame.size.width - _button.frame.size.width ) / 2.0, y, _button.frame.size.width, _button.frame.size.height) ];
     y += _button.frame.size.height + paddingBetweenSteps;
+ 
+    y += paddingBetweenSteps;
+    [_loggerVCButton setFrame:CGRectMake( self.view.frame.size.width - margin - _loggerVCButton.frame.size.width, y, _loggerVCButton.frame.size.width, _loggerVCButton.frame.size.height) ];
+    y += _loggerVCButton.frame.size.height + paddingBetweenSteps;
     
     [_containerScrollView setContentSize:CGSizeMake(self.view.bounds.size.width, y) ];
 }
@@ -177,8 +190,10 @@
 
 - (void)action
 {
-    LifeLog(@"- - - - -")
-    LifeColorLog([UIColor redColor], @"Action start");
+    //Clearing logs
+    [[LifeCycleLogger sharedInstance] clearLog];
+    
+    LifeColorLog([UIColor purpleColor], @"ACTION START");
     
     //1. step
     BOOL autoreleaseContainer = [self autoreleaseContainerInput];
@@ -207,7 +222,15 @@
     //5. step
     _testContainer = nil;
     
-    LifeColorLog([UIColor redColor], @"Action end");
+    LifeColorLog([UIColor purpleColor], @"ACTION END");
+}
+
+- (void)openLogAction
+{
+    [_loggerVC release];
+    _loggerVC = [[LifeCycleLoggerViewController alloc] init];
+    
+    [self presentViewController:_loggerVC animated:YES completion:nil];
 }
 
 #pragma mark - Input
