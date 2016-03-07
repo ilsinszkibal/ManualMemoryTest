@@ -15,6 +15,8 @@
 
 @interface ViewController : UIViewController
 {
+    UITapGestureRecognizer *_tapGesture;
+    
     TestContainer *_testContainer;
     
     UIScrollView *_containerScrollView;

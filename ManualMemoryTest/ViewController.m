@@ -18,6 +18,8 @@
 
 - (void)dealloc
 {
+    [_tapGesture release];
+    
     [_containerScrollView release];
     
     [_createContainerLabel release];
@@ -46,6 +48,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+    [self.view addGestureRecognizer:_tapGesture];
     
     _containerScrollView = [UIScrollView new];
     [self.view addSubview:_containerScrollView];
@@ -248,6 +253,12 @@
         _codeCheckerVC = [[CodeCheckerViewController alloc] init];
     
     [self presentViewController:_codeCheckerVC animated:YES completion:nil];
+}
+
+- (void)tapAction
+{
+    [_numberOfObjectsField resignFirstResponder];
+    [_depthOfCascadeObjectField resignFirstResponder];
 }
 
 #pragma mark - Input
