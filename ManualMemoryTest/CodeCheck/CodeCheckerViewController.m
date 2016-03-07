@@ -28,7 +28,13 @@
     [self.view addSubview:_titleLabel];
     
     _webView = [[UIWebView alloc] init];
+    _webView.delegate = self;
     [self.view addSubview:_webView];
+    
+    _activityIndicator = [UIActivityIndicatorView new];
+    _activityIndicator.color = [UIColor lightGrayColor];
+    [_activityIndicator sizeToFit];
+    [self.view addSubview:_activityIndicator];
     
     [self loadGitHub];
 }
@@ -39,6 +45,8 @@
     
     CGFloat margin = 15.0;
     
+    _activityIndicator.center = self.view.center;
+    
     [_backButton setFrame:CGRectMake(margin, 30, _backButton.frame.size.width, _backButton.frame.size.height) ];
     
     CGFloat titleMargin = _backButton.frame.size.width + margin;
@@ -47,10 +55,24 @@
     [_webView setFrame:CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height - 80) ];
 }
 
+#pragma mark - UIWebViewDelegate
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    _activityIndicator.hidden = NO;
+    [_activityIndicator startAnimating];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [_activityIndicator stopAnimating];
+    _activityIndicator.hidden = YES;
+}
+
 #pragma mark - Private
 
 - (void)loadGitHub
-{
+{   
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://github.com/ilsinszkibal/ManualMemoryTest/tree/master/ManualMemoryTest"] ];
     [_webView loadRequest:request];
 }

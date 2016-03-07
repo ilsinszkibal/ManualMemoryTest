@@ -236,8 +236,8 @@
 
 - (void)openLogAction
 {
-    [_loggerVC release];
-    _loggerVC = [[LifeCycleLoggerViewController alloc] init];
+    if ( _loggerVC == nil )
+        _loggerVC = [[LifeCycleLoggerViewController alloc] init];
     
     [self presentViewController:_loggerVC animated:YES completion:nil];
 }

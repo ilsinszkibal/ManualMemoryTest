@@ -31,9 +31,13 @@
     
     _textView = [UITextView new];
     [self.view addSubview:_textView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     [self setupTextViewContent];
-    
 }
 
 - (void)viewDidLayoutSubviews
@@ -48,7 +52,7 @@
     [_titleLabel setFrame:CGRectMake(titleMargin, 24, self.view.frame.size.width - 2 * titleMargin, 40) ];
     
     
-    [_textView setFrame:CGRectMake(margin, 80, self.view.frame.size.width - 2 * margin, self.view.frame.size.height - 80) ];
+    [_textView setFrame:CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height - 80) ];
 }
 
 #pragma mark - Private
@@ -57,7 +61,7 @@
 {
     NSMutableArray *messageArray = [[LifeCycleLogger sharedInstance] messageArray];
     
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:16] } ];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"" attributes:@{ NSFontAttributeName : [UIFont systemFontOfSize:16] } ];
     
     for (LifeCycleLogMessage *message in messageArray) {
         
@@ -65,10 +69,16 @@
         NSString *messageToPass = [NSString stringWithFormat:@"%@\n", message.messageText];
         NSAttributedString *messageString = [[NSAttributedString alloc] initWithString:messageToPass attributes:messageAttributes];
         
-        [string appendAttributedString:messageString];
+        [attributedString appendAttributedString:messageString];
     }
     
-    _textView.attributedText = string;
+    if ( [attributedString.string length] == 0 )
+    {
+        NSAttributedString *noContent = [[NSAttributedString alloc] initWithString:@"Nothing to present"];
+        [attributedString appendAttributedString:noContent];
+    }
+    
+    _textView.attributedText = attributedString;
 }
 
 #pragma mark - Action

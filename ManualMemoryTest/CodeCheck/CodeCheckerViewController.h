@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CodeCheckerViewController : UIViewController
+@interface CodeCheckerViewController : UIViewController<UIWebViewDelegate>
 {
     UIButton *_backButton;
     UILabel *_titleLabel;
     
+    UIActivityIndicatorView *_activityIndicator;
     UIWebView *_webView;
 }
 
