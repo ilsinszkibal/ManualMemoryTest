@@ -26,7 +26,7 @@
         
         _refObject = [[TestCascadeObject alloc] initWithCurrentDepth:( _depth + 1 ) maximumDepth:maximumDepth];
         
-        LifeColorLog([UIColor blueColor], @"INIT TestCascadeObject %@ for depth %ld", self, depth);
+        LifeColorLog([UIColor blueColor], @"INIT TestCascadeObject %@ for depth %ld", self, (unsigned long)depth);
     }
     
     return self;
@@ -34,11 +34,11 @@
 
 - (void)dealloc
 {
-    LifeColorLog([UIColor blueColor], @"DEALLOC START TestCascadeObject %@ for depth %ld", self, _depth);
+    LifeColorLog([UIColor blueColor], @"DEALLOC START TestCascadeObject %@ for depth %ld", self, (unsigned long)_depth);
     
     [_refObject release];
     
-    LifeColorLog([UIColor blueColor], @"DEALLOC END TestCascadeObject %@ for depth %ld", self, _depth);
+    LifeColorLog([UIColor blueColor], @"DEALLOC END TestCascadeObject %@ for depth %ld", self, (unsigned long)_depth);
     
     [super dealloc];
 }
