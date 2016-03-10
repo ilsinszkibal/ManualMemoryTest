@@ -36,6 +36,9 @@
     [_releaseContainerRefLabel release];
     [_releaseSwitch release];
     
+    [_secondReleaseContainerRefLabel release];
+    [_secondReleaseSwitch release];
+    
     [_containerRefToZeroLabel release];
     
     [_button release];
@@ -100,6 +103,14 @@
     _releaseSwitch = [UISwitch new];
     [_releaseSwitch setOn:YES animated:NO];
     [_containerScrollView addSubview:_releaseSwitch];
+    
+    
+    _secondReleaseContainerRefLabel = [[self createLabel] retain];
+    _secondReleaseContainerRefLabel.text = @"4. b, step: Call releasi on container again";
+    [_containerScrollView addSubview:_secondReleaseContainerRefLabel];
+    
+    _secondReleaseSwitch = [UISwitch new];
+    [_containerScrollView addSubview:_secondReleaseSwitch];
     
     
     //5. step
@@ -177,6 +188,10 @@
     
     [_releaseSwitch setFrame:CGRectMake(self.view.frame.size.width - margin - 70, y, 70, labelHeight) ];
     [_releaseContainerRefLabel setFrame:CGRectMake(margin, y, self.view.frame.size.width - 2 * margin - 70, labelHeight) ];
+    y += labelHeight;
+    
+    [_secondReleaseSwitch setFrame:CGRectMake(self.view.frame.size.width - margin - 70, y, 70, labelHeight) ];
+    [_secondReleaseContainerRefLabel setFrame:CGRectMake(margin, y, self.view.frame.size.width - 2 * margin - 70, labelHeight) ];
     y += labelHeight + paddingBetweenSteps;
     
     [_containerRefToZeroLabel setFrame:CGRectMake(margin, y, self.view.frame.size.width - 2 * margin, labelHeight)];
@@ -233,6 +248,10 @@
     if ( releaseContainerInput )
         [_testContainer release];
     
+    BOOL secondReleaseContainerInput = [self secondReleaseContainerInput];
+    if ( secondReleaseContainerInput )
+        [_testContainer release];
+    
     //5. step
     _testContainer = nil;
     
@@ -282,6 +301,11 @@
 - (BOOL)releaseContainerInput
 {
     return [_releaseSwitch isOn];
+}
+
+- (BOOL)secondReleaseContainerInput
+{
+    return [_secondReleaseSwitch isOn];
 }
 
 - (BOOL)autoreleaseContainerInput

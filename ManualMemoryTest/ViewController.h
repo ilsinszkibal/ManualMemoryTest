@@ -34,6 +34,8 @@
     
     UILabel *_releaseContainerRefLabel;
     UISwitch *_releaseSwitch;
+    UILabel *_secondReleaseContainerRefLabel;
+    UISwitch *_secondReleaseSwitch;
     
     UILabel *_containerRefToZeroLabel;
     
