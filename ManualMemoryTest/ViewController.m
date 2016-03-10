@@ -60,7 +60,7 @@
     
     //1. step
     _createContainerLabel = [[self createLabel] retain];
-    _createContainerLabel.text = @"1. step: Create container. Autorelease?";
+    _createContainerLabel.text = @"1. Create container. Autorelease?";
     [_containerScrollView addSubview:_createContainerLabel];
     
     _autoReleaseSwitch = [UISwitch new];
@@ -68,7 +68,7 @@
     
     //2. step
     _addObjectsLabel = [[self createLabel] retain];
-    _addObjectsLabel.text = @"2. step: Add objects with object number:";
+    _addObjectsLabel.text = @"2. Add objects with object number:";
     [_containerScrollView addSubview:_addObjectsLabel];
     
     
@@ -85,7 +85,7 @@
     
     //3. step
     _addCascadeObjectLabel = [[self createLabel] retain];
-    _addCascadeObjectLabel.text = @"3. step: Add cascade object with depth:";
+    _addCascadeObjectLabel.text = @"3. Add cascade object with depth:";
     [_containerScrollView addSubview:_addCascadeObjectLabel];
     
     
@@ -96,7 +96,7 @@
     
     //4. step
     _releaseContainerRefLabel = [[self createLabel] retain];
-    _releaseContainerRefLabel.text = @"4. step: Call release on container";
+    _releaseContainerRefLabel.text = @"4. Call release on container";
     [_containerScrollView addSubview:_releaseContainerRefLabel];
     
     
@@ -106,7 +106,7 @@
     
     
     _secondReleaseContainerRefLabel = [[self createLabel] retain];
-    _secondReleaseContainerRefLabel.text = @"4. b, step: Call releasi on container again";
+    _secondReleaseContainerRefLabel.text = @"Call releasi on container again";
     [_containerScrollView addSubview:_secondReleaseContainerRefLabel];
     
     _secondReleaseSwitch = [UISwitch new];
@@ -115,7 +115,7 @@
     
     //5. step
     _containerRefToZeroLabel = [[self createLabel] retain];
-    _containerRefToZeroLabel.text = @"5. step: Set container reference nil?";
+    _containerRefToZeroLabel.text = @"5. Set container reference nil";
     [_containerScrollView addSubview:_containerRefToZeroLabel];
     
     _button = [[UIButton alloc] init];
@@ -145,6 +145,7 @@
 - (UILabel*)createLabel
 {
     UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont systemFontOfSize:14.f];
     return [label autorelease];
 }
 
@@ -162,14 +163,14 @@
 {
     [super viewDidLayoutSubviews];
     
-    CGFloat margin = 10;
+    CGFloat margin = 5;
     CGFloat labelHeight = 40;
-    CGFloat paddingBetweenSteps = 20;
+    CGFloat paddingBetweenSteps = 26;
     
     [_containerScrollView setFrame:self.view.bounds];
     
     //Container elements
-    CGFloat y = 60;
+    CGFloat y = 38;
     [_autoReleaseSwitch setFrame:CGRectMake(self.view.frame.size.width - margin - 70, y, 70, labelHeight) ];
     [_createContainerLabel setFrame:CGRectMake(margin, y, self.view.frame.size.width - 2 * margin - 70, labelHeight) ];
     y += labelHeight + paddingBetweenSteps;
@@ -198,7 +199,7 @@
     y += labelHeight + paddingBetweenSteps;
     
     [_button setFrame:CGRectMake( ( self.view.frame.size.width - _button.frame.size.width ) / 2.0, y, _button.frame.size.width, _button.frame.size.height) ];
-    y += _button.frame.size.height + paddingBetweenSteps;
+    y += _button.frame.size.height;
  
     y += paddingBetweenSteps;
     [_loggerVCButton setFrame:CGRectMake( self.view.frame.size.width - margin - _loggerVCButton.frame.size.width, y, _loggerVCButton.frame.size.width, _loggerVCButton.frame.size.height) ];
